@@ -11,7 +11,7 @@ public class CompraProductoPK {
     @Column ( name ="id_compra" )
     private Integer idCompra;
 
-    @Column(name= "id_Producto")
+    @Column(name = "id_producto")
     private Integer idProducto;
 
     public Integer getIdCompra() {
