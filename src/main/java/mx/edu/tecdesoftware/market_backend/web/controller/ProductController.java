@@ -30,11 +30,11 @@ public class ProductController {
     }
 
     @GetMapping("/category/{categoryId}")
-    public ResponseEntity<Product> getCategory(@PathVariable("categoryId") int  categoryId){
-        return productService.getProduct(categoryId)
+    public ResponseEntity<List<Product>> getByCategory(@PathVariable("categoryId") int categoryId){
+        return productService.getProductByCategory(categoryId)
+                .filter(products -> !products.isEmpty())
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
-
     }
 
     @PostMapping("")
@@ -42,8 +42,11 @@ public class ProductController {
         return  ResponseEntity.ok(productService.save(product));
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("productId") int productId){
-        return ResponseEntity.ok(productService.delete(productId));
+    public ResponseEntity delete(@PathVariable("id") int productId){
+        if (productService.delete(productId)) {
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
 
