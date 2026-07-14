@@ -22,7 +22,7 @@ public class PurchaseController {
     }
 
     @GetMapping("/client/{clientId}")
-    public ResponseEntity<List<Purchase>> getByClient(@PathVariable("clientId") int clientId) {
+    public ResponseEntity<List<Purchase>> getByClient(@PathVariable("clientId") String clientId) {
         return purchaseService.getByClient(clientId)
                 .filter(purchases -> !purchases.isEmpty())
                 .map(ResponseEntity::ok)

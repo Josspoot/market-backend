@@ -9,8 +9,7 @@ import java.util.List;
 
 public class Cliente {
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
     private String nombre;
     private String apellidos;
@@ -22,11 +21,11 @@ public class Cliente {
     @OneToMany(mappedBy = "cliente")
     private List<Compra> compras;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

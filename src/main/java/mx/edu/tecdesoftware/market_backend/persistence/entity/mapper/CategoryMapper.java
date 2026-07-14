@@ -2,7 +2,7 @@ package mx.edu.tecdesoftware.market_backend.persistence.entity.mapper;
 
 import mx.edu.tecdesoftware.market_backend.domain.Category;
 import mx.edu.tecdesoftware.market_backend.persistence.entity.Categoria;
-import org.mapstruct.InheritConfiguration;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -18,7 +18,7 @@ public interface CategoryMapper {
     })
     Category toCategory(Categoria categoria);
 
-    @InheritConfiguration
+    @InheritInverseConfiguration
     @Mapping(target = "productos", ignore = true)
     Categoria toCategoria(Category category);
 }
